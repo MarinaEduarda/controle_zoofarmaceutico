@@ -32,24 +32,17 @@ class SetoresView(View):
         setores = Setor.objects.all()
         return render(request, 'setor.html', {'setores': setores})
 
-class FuncoesView(View):
+class UsuariosView(View):
     def get (self, request, *args, **kwargs):
-        funcoes = Funcao.objects.all()
-        return render(request, 'funcao.html', {'funcoes': funcoes})
-
-class AutorizadosView(View):
-    def get (self, request, *args, **kwargs):
-        autorizados = Autorizado.objects.all()
-        return render(request, 'autorizado.html', {'autorizados': autorizados})
+        usuarios = Usuario.objects.all()
+        return render(request, 'usuarios.html', {'usuarios': usuarios})
     
 class SaidasView(View):
     def get (self, request, *args, **kwargs):
         saidas = Saida.objects.all()
-        return render(request, 'autorizado.html', {'saidas': saidas})
+        return render(request, 'saidas.html', {'saidas': saidas})
 
 class DetalhesView(View):
     def get (self, request, *args, **kwargs):
         detalhes = Detalhes.objects.all()
         return render(request, 'detalhes.html', {'detalhes': detalhes})
-
-
