@@ -48,8 +48,15 @@
             </ul>
         </div>
     </nav>
+    
     <div class="container mt-5">
-        <h2 class="mb-4">Tabela de Datelhes</h2>
+        <h2 class="mb-4">Tabela de Detalhes</h2>
+
+        <!-- Botão para adicionar um novo detalhe de saída no canto superior direito -->
+        <div class="text-right mb-3">
+            <a href="http://127.0.0.1:8000/admin/app/detalhes/add/" class="btn btn-outline-success">Adicionar novo detalhe de saída</a>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -59,7 +66,6 @@
                     <th scope="col">Unidade de medida</th>
                     <th scope="col">Excluir</th>
                     <th scope="col">Editar</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -67,21 +73,20 @@
                 <tr>
                     <td>{{ detalhes.produto }}</td>
                     <td>{{ detalhes.saida }}</td>
-                    <td>{{ detalhes.quantidade}}</td>
-                    <td>{{ produtos.unid_medida}}</td>
-                    <td><a href="delete/{{ detalhes.id }}" class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ detalhes.id }}" class="btn btn-warning">Editar</a></td>
+                    <td>{{ detalhes.quantidade }}</td>
+                    <td>{{ produtos.unid_medida }}</td>
+                    <td><a href="delete/{{ detalhes.id }}" class="btn btn-outline-success">Excluir</a></td>
+                    <td><a href="editar/{{ detalhes.id }}" class="btn btn-outline-success">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+
     <!-- Incluindo jQuery e Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/di
-st/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/b
-ootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

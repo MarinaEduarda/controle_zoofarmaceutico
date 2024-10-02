@@ -7,14 +7,14 @@
     <title>Produtos</title>
     <!-- Incluindo Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <a class="navbar-brand" href="/">Controle Zoofarmacêutico</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle
-navigation">
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -49,8 +49,15 @@ navigation">
             </ul>
         </div>
     </nav>
+
     <div class="container mt-5">
         <h2 class="mb-4">Tabela de Produtos</h2>
+
+        <!-- Botão para adicionar um novo produto no canto superior direito -->
+        <div class="text-right mb-3">
+            <a href="http://127.0.0.1:8000/admin/app/produto/add/" class="btn btn-outline-success">Adicionar novo produto</a>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -60,7 +67,6 @@ navigation">
                     <th scope="col">Setor</th>
                     <th scope="col">Excluir</th>
                     <th scope="col">Editar</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -68,19 +74,19 @@ navigation">
                 <tr>
                     <td>{{ produtos.nome }}</td>
                     <td>{{ produtos.quantidade_total }}</td>
-                    <td>{{ produtos.unid_medida}}</td>
-                    <td>{{ produtos.setor}}</td>
-                    <td><a href="delete/{{ produtos.id }}" class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ produtos.id }}" class="btn btn-warning">Editar</a></td>
+                    <td>{{ produtos.unid_medida }}</td>
+                    <td>{{ produtos.setor }}</td>
+                    <td><a href="delete/{{ produtos.id }}" class="btn btn-outline-success">Excluir</a></td>
+                    <td><a href="editar/{{ produtos.id }}" class="btn btn-outline-success">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+
     <!-- Incluindo jQuery e Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/di
-st/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 

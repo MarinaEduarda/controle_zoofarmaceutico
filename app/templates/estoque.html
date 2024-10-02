@@ -52,6 +52,9 @@ navigation">
     </nav>
     <div class="container mt-5">
         <h2 class="mb-4">Tabela de Estoque</h2>
+        <div class="text-right mb-3">
+            <a href="http://127.0.0.1:8000/admin/app/estoque/add/" class="btn btn-outline-success">Adicionar nova saída</a>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -77,8 +80,8 @@ navigation">
                     <td>{{ estoques.quantidade}}</td>
                     <td>{{ estoques.unid_medida}}</td>
                     <td>{{ estoques.quantidade_frascos}}</td>
-                    <td><a href="delete/{{ estoques.id }}" class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ estoques.id }}" class="btn btn-warning">Editar</a></td>
+                    <td><a href="delete/{{ estoques.id }}" class="btn btn-outline-success">Excluir</a></td>
+                    <td><a href="editar/{{ estoques.id }}" class="btn btn-outline-success">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

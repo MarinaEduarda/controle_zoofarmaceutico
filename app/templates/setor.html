@@ -7,6 +7,7 @@
     <title>Setor</title>
     <!-- Incluindo Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -50,6 +51,12 @@
     </nav>
     <div class="container mt-5">
         <h2 class="mb-4">Tabela de Setores</h2>
+
+        <!-- Botão para adicionar uma nova saída no canto superior direito -->
+        <div class="text-right mb-3">
+            <a href="http://127.0.0.1:8000/admin/app/setor/add/" class="btn btn-outline-success">Adicionar novo setor</a>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -62,8 +69,8 @@
                 {% for setores in setores %}
                 <tr>
                     <td>{{ setores.nome}}</td>
-                    <td><a href="delete/{{ setores.id }}" class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ setores.id }}" class="btn btn-warning">Editar</a></td>
+                    <td><a href="delete/{{ setores.id }}" class="btn btn-outline-success">Excluir</a></td>
+                    <td><a href="editar/{{ setores.id }}" class="btn btn-outline-success">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

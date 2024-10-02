@@ -50,6 +50,11 @@
     </nav>
     <div class="container mt-5">
         <h2 class="mb-4">Tabela de Usuários</h2>
+        <!-- Botão para adicionar uma nova saída no canto superior direito -->
+        <div class="text-right mb-3">
+            <a href="http://127.0.0.1:8000/admin/app/usuario/add/" class="btn btn-outline-success">Adicionar novo usuário</a>
+        </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -72,8 +77,8 @@
                     <td>{{ usuarios.email}}</td>
                     <td>{{ usuarios.funcao}}</td>
                     <td>{{ usuarios.setor}}</td>
-                    <td><a href="delete/{{ usuarios.id }}"class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ usuarios.id }}" class="btn btn-warning">Editar</a></td>
+                    <td><a href="delete/{{ usuarios.id }}" class="btn btn-outline-success">Excluir</a></td>
+                    <td><a href="editar/{{ usuarios.id }}" class="btn btn-outline-success">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
