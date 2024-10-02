@@ -2,6 +2,7 @@ from django.db import models
 from django.db.models import Sum, F, DecimalField
 from django.core.exceptions import ValidationError
 
+
 class Setor(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome do Setor")
 
@@ -36,6 +37,7 @@ class Produto(models.Model):
         Atualiza a quantidade_total do produto com base nas entradas de estoque
         (quantidade * quantidade_frascos) e nas saídas detalhadas.
         """
+        
         # Soma das quantidades dos estoques multiplicadas pela quantidade_frascos
         total_estoque = self.estoques.aggregate(total=Sum(F('quantidade') * F('quantidade_frascos'), output_field=DecimalField()))['total'] or 0
 
@@ -78,6 +80,10 @@ class Estoque(models.Model):
         # Atualiza a quantidade_total do produto após salvar
         self.produto.atualizar_quantidade_total()
 
+    def delete(self, *args, **kwargs):
+        # Antes de deletar, atualiza a quantidade_total do produto
+        super().delete(*args, **kwargs)
+        self.produto.atualizar_quantidade_total()
 
 class Animal(models.Model):
     nome = models.CharField(max_length=100, verbose_name="Nome do Animal")
@@ -98,22 +104,15 @@ class Usuario(models.Model):
         (2, 'Aluno Morador'),
         (3, 'Funcionário'),
     )
-    PERFIL= (
-        (1, 'Administrador'),
-        (2, 'Usuário'),
-        (3, 'Gerenciador'),
-    )
 
     nome = models.CharField(max_length=100, verbose_name="Nome")
     CPF = models.CharField(max_length=14, verbose_name="CPF")  # Formato: XXX.XXX.XXX-XX
     email = models.EmailField(max_length=254, verbose_name="Email")
     funcao = models.IntegerField(verbose_name="Função", choices=FUNCAO)
-    setor = models.ForeignKey(Setor, on_delete=models.CASCADE, verbose_name="Setor")
-    perfil = models.IntegerField(verbose_name="Tipo de Usuário", choices=PERFIL)
-    senha = models.CharField(max_length=15, verbose_name="Senha", default='ifsuldeminas')  # Recomenda-se usar hashing para senhas
+    setor = models.ForeignKey(Setor, on_delete=models.CASCADE, verbose_name="Setor") 
 
     def __str__(self):
-        return f"{self.nome}, {self.CPF}, {self.email}, {self.get_funcao_display()}, {self.setor}, {self.perfil}"
+        return f"{self.nome}, {self.CPF}, {self.email}, {self.get_funcao_display()}, {self.setor}"
 
     class Meta:
         verbose_name = "Usuário"
@@ -175,4 +174,9 @@ class Detalhes(models.Model):
         self.clean()
         super().save(*args, **kwargs)
         # Atualiza a quantidade_total do produto após salvar
+        self.produto.atualizar_quantidade_total()
+
+    def delete(self, *args, **kwargs):
+        # Antes de deletar, atualiza a quantidade_total do produto
+        super().delete(*args, **kwargs)
         self.produto.atualizar_quantidade_total()

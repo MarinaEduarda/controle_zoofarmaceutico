@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edição de Produto</title>
+    <!-- Incluindo Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Estilo para aumentar o espaço entre as linhas */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center">
+        <div class="container mt-5" style="max-width: 600px;">
+            <h2 class="text-center">Detalhes do produto {{ produto.nome }}</h2>
+            <p><strong>Nome:</strong> {{ produto.saida }}</p>
+            <p><strong>Quantidade total:</strong> {{ produto.quantidade_total }}</p>
+            <p><strong>Unidade de medida:</strong> {{ produto.unid_medida }}</p>
+            <p><strong>Setor:</strong> {{ produto.setor }}</p>
+            <h3 class="mt-4 text-center">Editar produto</h3>
+
+            {% if messages %}
+            <ul class="messages list-unstyled">
+                {% for message in messages %}
+                <li {% if message.tags %} class="{{ message.tags }}" {% endif %} style="color: red;">
+                    <strong>{{ message }}</strong>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form method="post">
+                {% csrf_token %}
+                <!-- Div para o formulário -->
+                <div class="form-group">
+                    {{ form.as_div }}
+                </div>
+
+                <!-- Botões alinhados lado a lado -->
+                <div class="d-flex justify-content-between">
+                    <a href="/app/templates/produto.html" class="btn btn-warning">Voltar para Produtos</a>
+                    <button type="submit" class="btn btn-success">Salvar Edição</button>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <!-- Incluindo jQuery e Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

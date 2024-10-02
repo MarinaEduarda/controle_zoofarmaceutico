@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -43,7 +44,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'app/templates'),],
+        'DIRS': [os.path.join(BASE_DIR, './app/static/templates'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -58,6 +59,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap 4.5.2'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

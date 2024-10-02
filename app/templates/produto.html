@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saídas</title>
+    <title>Produtos</title>
     <!-- Incluindo Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -50,27 +50,28 @@ navigation">
         </div>
     </nav>
     <div class="container mt-5">
-        <h2 class="mb-4">Tabela de Saídas</h2>
+        <h2 class="mb-4">Tabela de Produtos</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Usuário</th>
-                    <th scope="col">Animal</th>
-                    <th scope="col">Data</th>
-                    <th scope="col">Horário</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Quantidade total</th>
+                    <th scope="col">Unidade de medidas</th>
+                    <th scope="col">Setor</th>
                     <th scope="col">Excluir</th>
                     <th scope="col">Editar</th>
+
                 </tr>
             </thead>
             <tbody>
-                {% for saidas in saidas %}
+                {% for produtos in produtos %}
                 <tr>
-                    <td>{{ saidas.usuario }}</td>
-                    <td>{{ saidas.animal }}</td>
-                    <td>{{ saidas.data}}</td>
-                    <td>{{ saidas.horario}}</td>
-                    <td><a href="delete/{{ saidas.id }}" class="btn btn-danger">Excluir</a></td>
-                    <td><a href="editar/{{ saidas.id }}" class="btn btn-warning">Editar</a></td>
+                    <td>{{ produtos.nome }}</td>
+                    <td>{{ produtos.quantidade_total }}</td>
+                    <td>{{ produtos.unid_medida}}</td>
+                    <td>{{ produtos.setor}}</td>
+                    <td><a href="delete/{{ produtos.id }}" class="btn btn-danger">Excluir</a></td>
+                    <td><a href="editar/{{ produtos.id }}" class="btn btn-warning">Editar</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -80,8 +81,7 @@ navigation">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/di
 st/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/b
-ootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
